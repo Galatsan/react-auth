@@ -1,0 +1,24 @@
+.signIn {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 22px;
+	max-width: 500px;
+	min-height: 300px;
+	margin: 5% auto;
+	color: white;
+	background-color: #3A1342;
+	padding: 30px;
+  }
+  
+  .submit {
+	margin: auto;
+	width: 80px;
+	height: 40px;
+	background-color:black;
+	color: white;
+  }
+
+  .submit:hover {
+	background-color: #200B24;
+  }

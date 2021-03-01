@@ -1,0 +1,14 @@
+.error {
+    color: red;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.labelTitle {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.red-border{
+    border-color: red;
+}
