@@ -1,0 +1,26 @@
+.tabs {
+	display: flex;
+	text-align: center;
+	font-size: 22px;
+	max-width: 560px;
+	background-color: #3A1342;
+	margin: 0% auto;
+  }
+
+  .activeButton{
+	background-color: #3A1342;
+	color: white;
+  }
+
+  .inactiveButton{
+	background-color: #000000;
+	color: white;
+  }
+
+  button {
+	height: 30px;  
+ 	border: 0px;
+	width: 100%;
+    display: inline-block;
+  }
+

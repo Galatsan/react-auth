@@ -5,14 +5,17 @@
 	font-size: 22px;
 	max-width: 500px;
 	min-height: 300px;
-	margin: 5% auto;
+	margin: 0% auto;
 	color: white;
 	background-color: #3A1342;
 	padding: 30px;
   }
   
   .submit {
-	margin: auto;
+	position: relative;
+	right: -400px;
+	float:right;
+	margin-top: 10px;
 	width: 80px;
 	height: 40px;
 	background-color:black;

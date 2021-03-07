@@ -10,16 +10,18 @@ export default class Email extends Component<EmailModel>{
                 <label className="labelTitle">Email</label>
 
                 <input
-                    className={this.props.errors.email && this.props.errors.email.message ? 'red-border' : ''}
+                    className={this.props.errors && this.props.errors ? 'red-border' : ''}
                     name={this.props.name}
                     type="text"
                     placeholder="Enter your email"
-                    ref={this.props.register()}
+                    ref={this.props.validationRules()}
                 />
 
-                <label className="error">{this.props.errors.email && this.props.errors.email.message}</label>
+                {this.props.errors ?
+                    <label className="error">{this.props.errors}</label> :
+                    null}
             </div>
         );
-      }
+    }
 
 }

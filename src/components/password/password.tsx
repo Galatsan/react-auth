@@ -14,10 +14,10 @@ export default class Password extends Component<PasswordModel>{
 
                 <div className="pass-wrapper">
                     <input
-                    className={this.props.errors.password && this.props.errors.password.message ? 'red-border' : ''}
+                    className={this.props.errors ? 'red-border' : ''}
                     name={this.props.name}
                     type={this.props.passwordShown ? "text" : "password"}
-                    ref={this.props.register({
+                    ref={this.props.validationRules({
                         required: "Password is required",
                         minLength: {
                         value: 6,
@@ -27,10 +27,11 @@ export default class Password extends Component<PasswordModel>{
                     />
                     <i onClick={this.props.togglePasswordVisiblity}>{eye}</i>
                 </div>
-
-                <label className="error">
-                    {this.props.errors.password && this.props.errors.password.message}
-                </label>
+                
+                {this.props.errors ?
+                    <label className="error">
+                        {this.props.errors}
+                    </label> : null }
             </div>
         );
     }

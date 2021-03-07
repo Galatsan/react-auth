@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import './signUp.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import Email from "../email/email";
 import Password from "../password/password";
 
 export default function SignUn() {
-  const eye = <FontAwesomeIcon icon={faEye} />;
-  const { register, handleSubmit, errors } = useForm()
+  const { register, handleSubmit, errors, getValues } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      resetPassword: ""
+    }
+  })
   const onSubmit = (data: any) => {
     console.log(data)
     setSingInDisabled(true)
@@ -25,8 +28,8 @@ export default function SignUn() {
 
       <Email
         name="email"
-        errors={errors}
-        register={() => register({
+        errors={errors && errors.email && errors.email.message}
+        validationRules={() => register({
           required: "Email is required",
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -35,10 +38,12 @@ export default function SignUn() {
         })} />
 
       <Password
+        key="password"
         name="password"
         title="Password"
-        errors={errors} passwordShown={passwordShown}
-        register={() => register({
+        errors={errors && errors.password && errors.password.message}
+        passwordShown={passwordShown}
+        validationRules={() => register({
           required: "Password is required",
           minLength: {
             value: 6,
@@ -48,12 +53,14 @@ export default function SignUn() {
         togglePasswordVisiblity={togglePasswordVisiblity} />
 
       <Password
+        key="resetPassword"
         name="resetPassword"
         title="Reset password"
-        errors={errors}
+        errors={errors && errors.resetPassword && errors.resetPassword.message}
         passwordShown={passwordShown}
-        register={() => register({
-          required: "Password is required",
+        validationRules={() => register({
+          validate: (value) => { return value !== getValues().password ? "Password doesn't match" : true },
+          required: "Reset password is required",
           minLength: {
             value: 6,
             message: "Password is too short"
@@ -62,7 +69,7 @@ export default function SignUn() {
         togglePasswordVisiblity={togglePasswordVisiblity} />
 
 
-      <button type="submit" className="submit" disabled={singInDisabled}>Sign in</button>
+      <button type="submit" className="submit" disabled={singInDisabled}>Sign Up</button>
 
     </form >
   );

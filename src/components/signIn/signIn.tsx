@@ -22,8 +22,8 @@ export default function SignIn() {
 
       <Email
         name="email"
-        errors={errors}
-        register={() => register({
+        errors={errors && errors.email && errors.email.message}
+        validationRules={() => register({
           required: "Email is required",
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -34,9 +34,9 @@ export default function SignIn() {
       <Password
         name="password"
         title="Password"
-        errors={errors}
+        errors={errors && errors.password && errors.password.message}
         passwordShown={passwordShown}
-        register={() => register({
+        validationRules={() => register({
           required: "Password is required",
           minLength: {
             value: 6,
@@ -45,7 +45,7 @@ export default function SignIn() {
         })}
         togglePasswordVisiblity={togglePasswordVisiblity} />
 
-      <button type="submit" className="submit" disabled={singInDisabled}>Sign in</button>
+      <button type="submit" className="submit" disabled={singInDisabled}>Sign In</button>
 
     </form >
   );
