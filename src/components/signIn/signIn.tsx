@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import './signIn.css'
 import { useState } from "react";
 import Email from "../email/email";
 import Password from "../password/password";
@@ -19,9 +18,10 @@ export default function SignIn() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="signIn">
-
+      <fieldset disabled={singInDisabled}>
       <Email
         name="email"
+        placeholder="Enter your email"
         errors={errors && errors.email && errors.email.message}
         validationRules={() => register({
           required: "Email is required",
@@ -34,6 +34,7 @@ export default function SignIn() {
       <Password
         name="password"
         title="Password"
+        placeholder="Enter your password"
         errors={errors && errors.password && errors.password.message}
         passwordShown={passwordShown}
         validationRules={() => register({
@@ -45,7 +46,8 @@ export default function SignIn() {
         })}
         togglePasswordVisiblity={togglePasswordVisiblity} />
 
-      <button type="submit" className="submit" disabled={singInDisabled}>Sign In</button>
+      <button type="submit" className="submit">Sign In</button>
+      </fieldset>
 
     </form >
   );

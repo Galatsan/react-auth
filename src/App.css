@@ -1,3 +1,116 @@
 .App {
     margin: 15% auto;
 }
+
+.error {
+    color: red;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.labelTitle {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.red-border{
+    border-color: red;
+}
+
+.tabs {
+	display: flex;
+	text-align: center;
+	font-size: 22px;
+	max-width: 560px;
+	background-color: #3A1342;
+	margin: 0% auto;
+  }
+
+  .activeButton{
+	background-color: #3A1342;
+	color: white;
+  }
+
+  .inactiveButton{
+	background-color: #000000;
+	color: white;
+  }
+
+  button {
+	height: 30px;  
+ 	border: 0px;
+	width: 100%;
+    display: inline-block;
+  }
+
+  button:hover{
+	  background-color: #200B24;
+  }
+
+  input {
+	background-color: #000000;
+	width: 100%;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+  }
+  
+  .pass-wrapper {
+	position: relative;
+  }
+  
+  i {
+	color: grey;
+	position: absolute;
+	top: 15%;
+	right: 5%;
+  }
+
+  i:hover {
+	color: #fff;
+	cursor: pointer;
+  }
+
+
+  .signIn {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 22px;
+	max-width: 500px;
+	margin: 0% auto;
+	color: white;
+	background-color: #3A1342;
+	padding: 30px;
+  }
+
+  .signUp {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 22px;
+	max-width: 500px;
+	min-height: 300px;
+	margin: 0% auto;
+	color: white;
+	background-color: #3A1342;
+	padding: 30px;
+  }
+  
+  .submit {
+	right: -400px;
+	float:right;
+	margin-top: 10px;
+	width: 80px;
+	height: 40px;
+	background-color:black;
+	color: white;
+  }
+
+  .submit:hover {
+	background-color: #200B24;
+  }
+
+  fieldset {
+	  border: 0px;
+  }

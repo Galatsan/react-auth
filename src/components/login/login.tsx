@@ -1,7 +1,6 @@
 import SignUp from '../singUp/signUp';
 import SignIn from '../signIn/signIn';
 import { useState } from 'react';
-import './login.css'
 
 export default function Login() {
 

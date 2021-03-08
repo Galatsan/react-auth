@@ -1,8 +1,7 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Component } from "react";
+import { Component } from "react";
 import PasswordModel from "../../models/passwordModel";
-import './password.css'
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 export default class Password extends Component<PasswordModel>{
@@ -10,10 +9,13 @@ export default class Password extends Component<PasswordModel>{
     render() {
         return (
             <div>
-                <label className="labelTitle">{this.props.title}</label>
+                <div className="labelTitle">
+                    <label>{this.props.title}</label>
+                </div>
 
                 <div className="pass-wrapper">
                     <input
+                    placeholder={this.props.placeholder}
                     className={this.props.errors ? 'red-border' : ''}
                     name={this.props.name}
                     type={this.props.passwordShown ? "text" : "password"}
@@ -29,9 +31,9 @@ export default class Password extends Component<PasswordModel>{
                 </div>
                 
                 {this.props.errors ?
-                    <label className="error">
+                    <div className="error"><label>
                         {this.props.errors}
-                    </label> : null }
+                    </label></div> : null }
             </div>
         );
     }
