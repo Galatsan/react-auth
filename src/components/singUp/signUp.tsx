@@ -16,11 +16,7 @@ export default function SignUn() {
     setSingInDisabled(true)
   };
 
-  const [passwordShown, setPasswordShown] = useState(false)
-
   const [singInDisabled, setSingInDisabled] = useState(false)
-
-  const togglePasswordVisiblity = () => { setPasswordShown(!passwordShown) }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="signUp">
@@ -43,15 +39,13 @@ export default function SignUn() {
           title="Password"
           placeholder="Enter your password"
           errors={errors && errors.password && errors.password.message}
-          passwordShown={passwordShown}
           validationRules={() => register({
             required: "Password is required",
             minLength: {
               value: 6,
               message: "Password is too short"
             }
-          })}
-          togglePasswordVisiblity={togglePasswordVisiblity} />
+          })} />
 
         <Password
           key="resetPassword"
@@ -59,7 +53,6 @@ export default function SignUn() {
           title="Reset password"
           placeholder="Enter your password again"
           errors={errors && errors.resetPassword && errors.resetPassword.message}
-          passwordShown={passwordShown}
           validationRules={() => register({
             validate: (value) => { return value !== getValues().password ? "Password doesn't match" : true },
             required: "Reset password is required",
@@ -67,8 +60,7 @@ export default function SignUn() {
               value: 6,
               message: "Password is too short"
             }
-          })}
-          togglePasswordVisiblity={togglePasswordVisiblity} />
+          })} />
 
 
         <button type="submit" className="submit">Sign Up</button>

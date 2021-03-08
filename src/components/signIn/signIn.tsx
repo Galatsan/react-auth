@@ -10,11 +10,7 @@ export default function SignIn() {
     setSingInDisabled(true)
   };
 
-  const [passwordShown, setPasswordShown] = useState(false)
-
   const [singInDisabled, setSingInDisabled] = useState(false)
-
-  const togglePasswordVisiblity = () => { setPasswordShown(!passwordShown) }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="signIn">
@@ -36,15 +32,13 @@ export default function SignIn() {
         title="Password"
         placeholder="Enter your password"
         errors={errors && errors.password && errors.password.message}
-        passwordShown={passwordShown}
         validationRules={() => register({
           required: "Password is required",
           minLength: {
             value: 6,
             message: "Password is too short"
           }
-        })}
-        togglePasswordVisiblity={togglePasswordVisiblity} />
+        })} />
 
       <button type="submit" className="submit">Sign In</button>
       </fieldset>

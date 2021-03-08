@@ -4,6 +4,4 @@ export default class PasswordModel {
     placeholder?: string = '' 
     errors: string|undefined = ''
     validationRules: any = null
-    togglePasswordVisiblity: any = null
-    passwordShown: boolean = false
 }
