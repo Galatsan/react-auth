@@ -1,4 +1,4 @@
-import SignUp from '../singUp/signUp';
+import SignUp from '../signUp/signUp';
 import SignIn from '../signIn/signIn';
 import { useState } from 'react';
 
@@ -11,8 +11,6 @@ export default function Login() {
 
   return (
     <div>
-
-
       <span className="tabs">
         <button className={signVisiblity ? 'activeButton' : 'inactiveButton'} onClick={toggleSignInVisiblity}>Sign In</button>
         <button className={!signVisiblity ? 'activeButton' : 'inactiveButton'} onClick={toggleSingUpVisiblity}>Sign Up</button>

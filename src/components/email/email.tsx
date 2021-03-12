@@ -26,3 +26,15 @@ export default class Email extends Component<EmailModel>{
     }
 
 }
+
+const [inputType, setInputType] = useState('password')
+<Input
+    type={inputType}
+    label="string"
+    value="value"
+    onChange={() => {}}
+    icon={<Icon
+        onClick={() => setInputType(inputType === 'password' ? 'text' : 'password')} />}
+    error={sting | undefined} />
+
+    <Input type="email" value={email} onChange={setEmail} />
