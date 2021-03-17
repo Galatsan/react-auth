@@ -2,28 +2,26 @@
     margin: 15% auto;
 }
 
-.error {
-    color: red;
-    text-align: left;
-    margin-left: 10px;
-}
-
-.labelTitle {
-    text-align: left;
-    margin-left: 10px;
-}
-
 .red-border{
-    border-color: red;
+	border: 1px solid #C8300E;
 }
 
 .tabs {
 	display: flex;
 	text-align: center;
-	font-size: 22px;
-	max-width: 560px;
+	font-size: 16px;
+	max-width: 460px;
 	background-color: #3A1342;
 	margin: 0% auto;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 19px;
+
+
+	color: #FFFFFF;
+
   }
 
   .activeButton{
@@ -47,41 +45,16 @@
 	  background-color: #200B24;
   }
 
-  input {
-	background-color: #000000;
-	width: 100%;
-	height: 40px;
-	font-size: 20px;
-	color: white;
-  }
-  
-  .pass-wrapper {
-	position: relative;
-  }
-  
-  i {
-	color: grey;
-	position: absolute;
-	top: 15%;
-	right: 5%;
-  }
-
-  i:hover {
-	color: #fff;
-	cursor: pointer;
-  }
-
-
   .signIn {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	font-size: 22px;
-	max-width: 500px;
+	max-width: 460px;
+	max-height: 289;
 	margin: 0% auto;
 	color: white;
 	background-color: #3A1342;
-	padding: 30px;
   }
 
   .signUp {
@@ -89,12 +62,11 @@
 	flex-direction: column;
 	text-align: center;
 	font-size: 22px;
-	max-width: 500px;
-	min-height: 300px;
+	max-width: 460px;
+	max-height: 289;
 	margin: 0% auto;
 	color: white;
 	background-color: #3A1342;
-	padding: 30px;
   }
   
   .submit {
@@ -105,6 +77,13 @@
 	height: 40px;
 	background-color:black;
 	color: white;
+
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+	color: #FFFFFF;
   }
 
   .submit:hover {

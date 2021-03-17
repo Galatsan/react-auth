@@ -1,16 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Email from "../email/email";
-import Password from "../password/password";
+import Input from "../input/input"
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function SignUn() {
-  const { register, handleSubmit, errors, getValues } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-      resetPassword: ""
-    }
-  })
+  const { register, handleSubmit, errors, getValues } = useForm()
   const onSubmit = (data: any) => {
     console.log(data)
     setSingInDisabled(true)
@@ -18,10 +13,21 @@ export default function SignUn() {
 
   const [singInDisabled, setSingInDisabled] = useState(false)
 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [resetPassword, setResetPassword] = useState('')
+
+  const [passwordInputType, setPasswordInputType] = useState('password')
+  const [resetPasswordInputType, setResetPasswordInputType] = useState('password')
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="signUp">
       <fieldset disabled={singInDisabled}>
-        <Email
+        <Input
+          value={email}
+          onChange={setEmail}
+          title="Email"
+          inputType="text"
           name="email"
           placeholder="Enter your email"
           errors={errors && errors.email && errors.email.message}
@@ -33,12 +39,15 @@ export default function SignUn() {
             }
           })} />
 
-        <Password
-          key="password"
+        <Input
+          value={password}
+          onChange={setPassword}
+          inputType={passwordInputType}
           name="password"
           title="Password"
           placeholder="Enter your password"
           errors={errors && errors.password && errors.password.message}
+          icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setResetPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
           validationRules={() => register({
             required: "Password is required",
             minLength: {
@@ -47,12 +56,15 @@ export default function SignUn() {
             }
           })} />
 
-        <Password
-          key="resetPassword"
+        <Input
+          value={resetPassword}
+          onChange={setResetPassword}
+          inputType={resetPasswordInputType}
           name="resetPassword"
           title="Reset password"
           placeholder="Enter your password again"
           errors={errors && errors.resetPassword && errors.resetPassword.message}
+          icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
           validationRules={() => register({
             validate: (value) => { return value !== getValues().password ? "Password doesn't match" : true },
             required: "Reset password is required",

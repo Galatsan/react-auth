@@ -1,3 +1,11 @@
 .Tabs {
-  
+	font-size: 16px;
+	max-width: 460px;
+	background-color: #3A1342;
+	margin: 0% auto;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 19px;
+	color: #FFFFFF;
 }

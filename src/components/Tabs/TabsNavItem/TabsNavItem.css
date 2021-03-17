@@ -6,6 +6,11 @@
   background-color: var(--bg);
   border: 0;
 
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 19px;
+
 }
 .TabsNavItem:hover {
   background-color: var(--hover);
