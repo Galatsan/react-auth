@@ -16,7 +16,6 @@ export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordInputType, setPasswordInputType] = useState('password')
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="signIn">
       <fieldset disabled={singInDisabled}>
@@ -24,7 +23,7 @@ export default function SignIn() {
           value={email}
           onChange={setEmail}
           title="Email"
-          inputType="text"
+          type="text"
           name="email"
           placeholder="Enter your email"
           errors={errors && errors.email && errors.email.message}
@@ -39,7 +38,7 @@ export default function SignIn() {
         <Input
           value={password}
           onChange={setPassword}
-          inputType={passwordInputType}
+          type={passwordInputType}
           name="password"
           title="Password"
           placeholder="Enter your password"

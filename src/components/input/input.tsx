@@ -2,19 +2,20 @@ import React from 'react'
 import './input.css'
 
 type Props = {
-    inputType: string
-    value: any
+    type: string
+    value?: string
     name: string
     placeholder?: string
     title: string
     icon?: JSX.Element | undefined
-    errors: string | undefined
-    validationRules: () => any,
-    onChange: (value: string) => void
+    errors?: string
+    validationRules?: () => any,
+    onChange?: (value: string) => void,
+    defaultValue?: string
 }
 
 const Input: React.FC<Props> = ({
-    inputType,
+    type,
     errors,
     placeholder,
     title,
@@ -22,32 +23,37 @@ const Input: React.FC<Props> = ({
     name,
     icon,
     validationRules,
-    onChange
-}) => (
-    <div>
-        <div className="labelTitle">
-            <label>{title}</label>
+    onChange,
+    defaultValue
+}) => {
+    const onInputChange = onChange ? (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value) : undefined
+    return (
+        <div>
+            <div className="labelTitle">
+                <label>{title}</label>
+            </div>
+    
+            <div className="wrapper">
+                <input
+                    defaultValue={defaultValue}
+                    placeholder={placeholder}
+                    className={errors ? 'red-border' : ''}
+                    name={name}
+                    value={value}
+                    type={type}
+                    ref={validationRules && validationRules()}
+                    onChange={onInputChange}
+                />
+                {icon ? <i>{icon}</i> : null}
+            </div>
+    
+            {errors ?
+                <div className="error"><label>
+                    {errors}
+                </label></div> : null}
         </div>
-
-        <div className="wrapper">
-            <input
-                placeholder={placeholder}
-                className={errors ? 'red-border' : ''}
-                name={name}
-                value={value}
-                type={inputType}
-                ref={validationRules()}
-                onChange={e => onChange(e.target.value)}
-            />
-            {icon ? <i>{icon}</i> : null}
-        </div>
-
-        {errors ?
-            <div className="error"><label>
-                {errors}
-            </label></div> : null}
-    </div>
-)
+    )
+}
 
 
 export default Input
