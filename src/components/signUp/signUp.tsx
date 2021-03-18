@@ -1,21 +1,47 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../input/input"
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function SignUn() {
-  const { register, handleSubmit, errors, getValues } = useForm()
+
+// focused
+// changed
+// touched
+// dirty
+
+// <input
+//   onChange={e => {
+//     setChanged('email');
+//     setValue('email', e.target.value)
+//     setDirty('email', true)
+//   }}
+//   onFocus={() => {
+//     setFocus('email', true);
+//     setTouched('email', true)
+//   }}
+//   onBlur={() => setFocus('email', false)}
+// />
+export default function SignUp() {
+  const { register, handleSubmit, errors, getValues, setValue } = useForm()
   const onSubmit = (data: any) => {
     console.log(data)
     setSingInDisabled(true)
   };
 
   const [singInDisabled, setSingInDisabled] = useState(false)
+  const defaultValue = 'umer@gmail.com'
+  console.log(errors)
+  // const [valueMapper, setValueMapper] = useState(defaultValue)
+  // useEffect(() => {
+  //   setValue('email', valueMapper)
+  // })
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [resetPassword, setResetPassword] = useState('')
+
+
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
+  // const [resetPassword, setResetPassword] = useState('')
 
   const [passwordInputType, setPasswordInputType] = useState('password')
   const [resetPasswordInputType, setResetPasswordInputType] = useState('password')
@@ -24,10 +50,9 @@ export default function SignUn() {
     <form onSubmit={handleSubmit(onSubmit)} className="signUp">
       <fieldset disabled={singInDisabled}>
         <Input
-          value={email}
-          onChange={setEmail}
+          defaultValue={defaultValue}
           title="Email"
-          inputType="text"
+          type="text"
           name="email"
           placeholder="Enter your email"
           errors={errors && errors.email && errors.email.message}
@@ -40,14 +65,12 @@ export default function SignUn() {
           })} />
 
         <Input
-          value={password}
-          onChange={setPassword}
-          inputType={passwordInputType}
+          type={passwordInputType}
           name="password"
           title="Password"
           placeholder="Enter your password"
           errors={errors && errors.password && errors.password.message}
-          icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setResetPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
+          icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
           validationRules={() => register({
             required: "Password is required",
             minLength: {
@@ -57,14 +80,12 @@ export default function SignUn() {
           })} />
 
         <Input
-          value={resetPassword}
-          onChange={setResetPassword}
-          inputType={resetPasswordInputType}
+          type={resetPasswordInputType}
           name="resetPassword"
           title="Reset password"
           placeholder="Enter your password again"
           errors={errors && errors.resetPassword && errors.resetPassword.message}
-          icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
+          icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setResetPasswordInputType(resetPasswordInputType === 'password' ? 'text' : 'password')} />}
           validationRules={() => register({
             validate: (value) => { return value !== getValues().password ? "Password doesn't match" : true },
             required: "Reset password is required",
@@ -73,9 +94,15 @@ export default function SignUn() {
               message: "Password is too short"
             }
           })} />
+        {/* <Input
+          type="text"
+          name="valueMapper"
+          value={valueMapper}
+          title="Value mapper"
+          placeholder="Enter your email from here right to state"
+          onChange={value => setValueMapper(value)} /> */}
 
-
-        <button type="submit" className="submit">Sign Up</button>
+        <button type="submit" className="submit">Sign Up</button> 
       </fieldset>
 
     </form >
