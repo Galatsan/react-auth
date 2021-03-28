@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import Input from "../input/input"
+import { useState } from "react";
+import Input from "../Shared/Input/Input"
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -23,26 +23,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //   onBlur={() => setFocus('email', false)}
 // />
 export default function SignUp() {
-  const { register, handleSubmit, errors, getValues, setValue } = useForm()
+  const { register, handleSubmit, errors, getValues } = useForm()
   const onSubmit = (data: any) => {
     console.log(data)
     setSingInDisabled(true)
   };
 
   const [singInDisabled, setSingInDisabled] = useState(false)
-  const defaultValue = 'umer@gmail.com'
-  console.log(errors)
-  // const [valueMapper, setValueMapper] = useState(defaultValue)
-  // useEffect(() => {
-  //   setValue('email', valueMapper)
-  // })
-
-
-
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [resetPassword, setResetPassword] = useState('')
-
   const [passwordInputType, setPasswordInputType] = useState('password')
   const [resetPasswordInputType, setResetPasswordInputType] = useState('password')
 
@@ -50,13 +37,12 @@ export default function SignUp() {
     <form onSubmit={handleSubmit(onSubmit)} className="signUp">
       <fieldset disabled={singInDisabled}>
         <Input
-          defaultValue={defaultValue}
           title="Email"
           type="text"
           name="email"
           placeholder="Enter your email"
           errors={errors && errors.email && errors.email.message}
-          validationRules={() => register({
+          validationRulesRef={() => register({
             required: "Email is required",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -71,7 +57,7 @@ export default function SignUp() {
           placeholder="Enter your password"
           errors={errors && errors.password && errors.password.message}
           icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
-          validationRules={() => register({
+          validationRulesRef={() => register({
             required: "Password is required",
             minLength: {
               value: 6,
@@ -86,7 +72,7 @@ export default function SignUp() {
           placeholder="Enter your password again"
           errors={errors && errors.resetPassword && errors.resetPassword.message}
           icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setResetPasswordInputType(resetPasswordInputType === 'password' ? 'text' : 'password')} />}
-          validationRules={() => register({
+          validationRulesRef={() => register({
             validate: (value) => { return value !== getValues().password ? "Password doesn't match" : true },
             required: "Reset password is required",
             minLength: {
@@ -94,13 +80,6 @@ export default function SignUp() {
               message: "Password is too short"
             }
           })} />
-        {/* <Input
-          type="text"
-          name="valueMapper"
-          value={valueMapper}
-          title="Value mapper"
-          placeholder="Enter your email from here right to state"
-          onChange={value => setValueMapper(value)} /> */}
 
         <button type="submit" className="submit">Sign Up</button> 
       </fieldset>

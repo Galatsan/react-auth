@@ -1,5 +1,5 @@
 import React from 'react'
-import './input.css'
+import './Input.css'
 
 type Props = {
     type: string
@@ -9,7 +9,18 @@ type Props = {
     title: string
     icon?: JSX.Element | undefined
     errors?: string
-    validationRules?: () => any,
+    validationRulesRef?: () => any,
+    validationRules?: {
+        required?: string,
+        pattern?: {
+            value: RegExp,
+            message: string
+        },
+        minLength?: {
+            value: number,
+            message: string
+        }
+    }
     onChange?: (value: string) => void,
     defaultValue?: string
 }
@@ -22,6 +33,7 @@ const Input: React.FC<Props> = ({
     value,
     name,
     icon,
+    validationRulesRef,
     validationRules,
     onChange,
     defaultValue
@@ -32,7 +44,7 @@ const Input: React.FC<Props> = ({
             <div className="labelTitle">
                 <label>{title}</label>
             </div>
-    
+
             <div className="wrapper">
                 <input
                     defaultValue={defaultValue}
@@ -41,12 +53,12 @@ const Input: React.FC<Props> = ({
                     name={name}
                     value={value}
                     type={type}
-                    ref={validationRules && validationRules()}
+                    ref={validationRulesRef && validationRulesRef()}
                     onChange={onInputChange}
                 />
                 {icon ? <i>{icon}</i> : null}
             </div>
-    
+
             {errors ?
                 <div className="error"><label>
                     {errors}
@@ -57,15 +69,3 @@ const Input: React.FC<Props> = ({
 
 
 export default Input
-
-/*const [inputType, setInputType] = useState('password')
-<Input
-    type={inputType}
-    label="string"
-    value="value"
-    onChange={() => {}}
-    icon={<Icon
-        onClick={() => setInputType(inputType === 'password' ? 'text' : 'password')} />}
-    error={sting | undefined} />
-
-    <Input type="email" value={email} onChange={setEmail} />*/

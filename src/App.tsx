@@ -1,8 +1,8 @@
 import './App.css';
 // import Login from './components/login/login';
-import Tabs from './components/Tabs/Tabs'
-import SignIn from './components/signIn/signIn'
-import SignUp from './components/signUp/signUp'
+import Tabs from './components/Shared/Tabs/Tabs'
+import SignIn from './components/SignIn/SignIn'
+import SignUp from './components/SignUp/SignUp'
 
 function App() {
   return (

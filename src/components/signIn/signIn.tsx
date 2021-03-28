@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Input from "../input/input"
+import Input from "../Shared/Input/Input"
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -27,7 +27,7 @@ export default function SignIn() {
           name="email"
           placeholder="Enter your email"
           errors={errors && errors.email && errors.email.message}
-          validationRules={() => register({
+          validationRulesRef={() => register({
             required: "Email is required",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -44,7 +44,7 @@ export default function SignIn() {
           placeholder="Enter your password"
           errors={errors && errors.password && errors.password.message}
           icon={<FontAwesomeIcon icon={faEye} className="eye" onClick={() => setPasswordInputType(passwordInputType === 'password' ? 'text' : 'password')} />}
-          validationRules={() => register({
+          validationRulesRef={() => register({
             required: "Password is required",
             minLength: {
               value: 6,
